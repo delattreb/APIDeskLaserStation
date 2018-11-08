@@ -47,6 +47,10 @@ module.exports = {
                 return _.isString(value) && value.length >= 8 && value.match(/[a-z]/i) && value.match(/[0-9]/);
             }
         }
+    }, customToJSON: function () {
+        // Return a shallow copy of this record with the password and ssn removed.
+        //return _.omit(this, ['temperature', 'humidity'])
+        return _.omit(this, ['password', 'createdAt', 'updatedAt'])
     },
 
 
