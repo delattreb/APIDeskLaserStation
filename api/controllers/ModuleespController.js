@@ -8,10 +8,13 @@
 module.exports = {
     updateESP: async function (req, res) {
         let namep = req.param('name')
-        let statp = req.param('state')
-        let result = await Customer.findOne({ name: namep })
+        let connectedp = req.param('connected')
+        let result = await Moduleesp.findOne({ name: namep })
         if (!result) {
-            return res.notFound('No record found')
+            await Moduleesp.create({ name: namep, connected: connectedp });
+        } else {
+            sails.log(result.id)
+            result = await Moduleesp.update({ id: result.id }).set({ connected: connectedp });
         }
         return res.json(result);
     },
