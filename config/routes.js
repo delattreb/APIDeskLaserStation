@@ -24,8 +24,9 @@ module.exports.routes = {
      *                                                                          *
      ***************************************************************************/
 
-    '/': {
-        view: 'pages/homepage'
+    '/updateESP': {
+        controller: 'ModuleespController',
+        action: 'updateESP'
     },
 
     // Authentification Routes
