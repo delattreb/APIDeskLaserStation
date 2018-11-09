@@ -11,9 +11,8 @@ module.exports = {
         let connectedp = req.param('connected')
         let result = await Moduleesp.findOne({ name: namep })
         if (!result) {
-            await Moduleesp.create({ name: namep, connected: connectedp });
+            result = await Moduleesp.create({ name: namep, connected: connectedp });
         } else {
-            sails.log(result.id)
             result = await Moduleesp.update({ id: result.id }).set({ connected: connectedp });
         }
         return res.json(result);
