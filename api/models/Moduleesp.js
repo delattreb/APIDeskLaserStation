@@ -6,7 +6,6 @@
  */
 
 module.exports = {
-
   attributes: {
     name: {
       type: 'string',
@@ -22,7 +21,17 @@ module.exports = {
     connected: {
       type: 'number',
       allowNull: true,
+      defaultsTo: 0,
     },
-  },
-};
 
+    team: {
+      type: 'number',
+      allowNull: true,
+      defaultsTo: 0,
+    },
+
+  },
+  customToJSON: function () {
+    return _.omit(this, ['createdAt', 'updatedAt'])
+  }
+};
